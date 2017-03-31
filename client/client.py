@@ -1,3 +1,6 @@
+# Networks lab2
+# Jesse Shellabarger & Tayler How
+
 from socket import *
 import re
 import os
