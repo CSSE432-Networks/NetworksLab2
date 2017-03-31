@@ -1,8 +1,14 @@
-'''
-Created on Mar 24, 2017
+from socket import *
 
-@author: Jesse Shellabarger
-'''
-
-if __name__ == '__main__':
-    pass
+serverPort = 12000
+serverSocket = socket(AF_INET, SOCK_STREAM)
+serverSocket.bind(('', serverPort))
+serverSocket.listen(1)
+print 'The server is ready to receive'
+while 1:
+    connectionSocket, addr = serverSocket.accept()
+    sentence = connectionSocket.recv(1024)
+    
+    capitalizedSentence = sentence.upper()
+    connectionSocket.send(capitalizedSentence)
+    connectionSocket.close()
